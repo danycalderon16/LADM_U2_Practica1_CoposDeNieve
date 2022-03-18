@@ -11,11 +11,14 @@ class Carro (l:Lienzo){
     var x = 0f
     var y = 0f
     var movX = 0f
+    val colores = arrayOf(Color.RED,Color.BLUE,Color.MAGENTA,Color.GREEN,Color.BLACK,Color.WHITE,Color.LTGRAY)
 
+    var color = Color.RED
     init {
         x = 100f
         y = 1700f
         movX = rand(6)+2
+        color = Color.RED
 
     }
 
@@ -29,13 +32,14 @@ class Carro (l:Lienzo){
         if(x-100>l.width) {
             movX = rand(15)+8
             x = -100f
+            cambiarColor()
         }
     }
 
     fun pintar(canvas: Canvas){
         var p = Paint()
 
-        p.color = Color.RED
+        p.color = color
         canvas.drawRect(x-70,y-30,x+50,y,p)
         canvas.drawRect(x-120,y,x+120,y+50,p)
         p.color = Color.rgb(40, 247, 227)
@@ -49,7 +53,6 @@ class Carro (l:Lienzo){
 
         canvas.drawCircle(x-60,y+60,20f,p)
         canvas.drawCircle(x+60,y+60,20f,p)
-
 
         p.color = Color.WHITE
         canvas.drawCircle(x-75,y,5f,p)
@@ -76,5 +79,9 @@ class Carro (l:Lienzo){
         canvas.drawCircle(x+30,y-35,5f,p)
         canvas.drawCircle(x+20,y-35,5f,p)
         canvas.drawCircle(x+10,y-35,5f,p)
+    }
+
+    fun cambiarColor(){
+        color = colores[Random.nextInt(colores.size)]
     }
 }

@@ -16,15 +16,16 @@ class Copo (l:Lienzo){
     var color = Color.argb(100,255,255,255)
     var factor = 0f
     var radio = 0f
+    var intensidad = 50
 
     init {
         x = rand(1000)
         y = rand(2000)
 
-        factor = rand(100) / 100
+        factor = rand(intensidad) / 100
 
         movX = rand(6)+2
-        movY = 20*factor
+        movY = 30*factor
 
         if (rand(100)<50f){
             movX *= -1
@@ -32,9 +33,9 @@ class Copo (l:Lienzo){
 
         radio = rand(40)+10
 
-        var alpha = 255*factor
+        val alpha = 255*factor
         color = Color.argb(alpha.toInt(),255,255,255)
-        Log.i("FA","Factor "+factor+" - Alpha "+alpha+" - "+movY)
+        //Log.i("FA","Factor "+factor+" - Alpha "+alpha+" - "+movY)
 
     }
 
@@ -53,5 +54,32 @@ class Copo (l:Lienzo){
         var p = Paint()
         p.color = color
         canvas.drawCircle(x,y,radio,p)
+    }
+
+    fun velocidadAlta(){
+        factor = rand(33)/100 + 0.66f
+
+        movY = 30*factor
+        val alpha = 255*factor
+        color = Color.argb(alpha.toInt(),255,255,255)
+        Log.i("FA AI","Factor "+factor+" - Alpha "+alpha+" - "+movY)
+    }
+    fun velocidadAMedia(){
+        factor = rand(33)/100 + 0.33f
+
+        movY = 40*factor
+        val alpha = 255*factor
+        color = Color.argb(alpha.toInt(),255,255,255)
+        Log.i("FA AI","Factor "+factor+" - Alpha "+alpha+" - "+movY)
+    }
+
+    fun velocidadBaja(){
+        factor = (rand(33)/ 100)
+
+
+        movY = 20*factor
+        val alpha = 255*factor
+        color = Color.argb(alpha.toInt(),255,255,255)
+        Log.i("FA DI","Factor "+factor+" - Alpha "+alpha+" - "+movY)
     }
 }
