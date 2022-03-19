@@ -37,7 +37,7 @@ class Copo (l:Lienzo){
         val alpha = 255*factor
         color = Color.argb(alpha.toInt(),255,255,255)
        // Log.i("FA","Factor "+factor+" - Alpha "+alpha+" - "+movY)
-        Log.i("FA","Factor "+factor)
+        //Log.i("FA","Factor "+factor)
 
     }
 
@@ -57,7 +57,8 @@ class Copo (l:Lienzo){
         p.color = color
         //c.drawCircle(x,y,radio,p)
 
-        p.strokeWidth = 8f
+        //Log.i("Factor"," "+(20*factor))
+        p.strokeWidth = 0f + 20*factor
         c.drawLine(x+0f,y+50f,x+50f,y+50f,p)
         c.drawLine(x+50f,y+50f,x+100f,y+50f,p)
         c.drawLine(x+50f,y+0f,x+50f,y+50f,p)
@@ -75,7 +76,7 @@ class Copo (l:Lienzo){
         movY = 30*factor
         val alpha = 255*factor
         color = Color.argb(alpha.toInt(),255,255,255)
-        Log.i("FA AI","Factor "+factor+" - Alpha "+alpha+" - "+movY)
+        //Log.i("FA AI","Factor "+factor+" - Alpha "+alpha+" - "+movY)
     }
     fun velocidadAMedia(){
         factor = rand(33)/100 + 0.33f
@@ -83,7 +84,7 @@ class Copo (l:Lienzo){
         movY = 40*factor
         val alpha = 255*factor
         color = Color.argb(alpha.toInt(),255,255,255)
-        Log.i("FA AI","Factor "+factor+" - Alpha "+alpha+" - "+movY)
+        //Log.i("FA AI","Factor "+factor+" - Alpha "+alpha+" - "+movY)
     }
 
     fun velocidadBaja(){

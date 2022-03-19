@@ -118,17 +118,46 @@ class Lienzo (mainActivity: MainActivity) : View(mainActivity){
         c.drawRect(100f, 430f, 110f, 635f, p)
         c.drawRect(200f, 430f, 210f, 635f, p)
 
+        /**
+         * Granja
+         * */
+
+        p.color = Color.rgb(166, 19, 26)
+
+        c.drawRect(200f,1000f,700f,1300f,p)
+        p.color = Color.rgb(118, 23, 18)
+        c.drawRect(180f,950f,720f,1000f,p)
+        (0..10).forEach {
+            c.drawRect(200f,990f+30*it,700f,1000f+30*it,p)
+        }
+
+        p.color = Color.WHITE //Puerta
+        c.drawRect(300f,1100f,600f,1300f,p)
+        p.color = Color.rgb(196, 196, 196)
+        c.drawRect(300f,1100f,600f,1130f,p)
+        c.drawRect(300f,1270f,600f,1300f,p)
+        c.drawRect(300f,1100f,330f,1300f,p)
+        c.drawRect(570f,1100f,600f,1300f,p)
+        c.drawRect(420f,1100f,450f,1300f,p)
+        c.drawRect(450f,1100f,480f,1300f,p)
+
+        p.color = Color.rgb(58, 224, 49)
+        c.drawCircle(650f,1300f,40f,p)
+        c.drawCircle(690f,1300f,40f,p)
+        c.drawCircle(697f,1280f,40f,p)
+        c.drawCircle(710f,1300f,40f,p)
+
         carro.forEach {
             it.move()
             it.pintar(c)
         }
 
         copos.forEach {
-            if(i==333)
+            if(i==0)
                 it.velocidadBaja()
-            if(i==666)
+            if(i==333)
                 it.velocidadAMedia()
-            if(i==999)
+            if(i==666)
                 it.velocidadAlta()
 
             it.move()
