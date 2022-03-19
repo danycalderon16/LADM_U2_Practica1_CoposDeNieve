@@ -10,4 +10,4 @@ MTI SERGIO BENIGNO CASTILLO VALTIERRA
 
 ## Aplicación de una escena donde por medio de corrutinas y canvas, se hace simula que están nevando copos de nieve
 
-![avatar](gif.mp4)
+![avatar](gif.gif)
