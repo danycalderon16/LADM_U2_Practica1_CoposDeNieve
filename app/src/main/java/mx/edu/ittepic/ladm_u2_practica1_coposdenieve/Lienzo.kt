@@ -9,6 +9,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import mx.edu.ittepic.ladm_u2_practica1_coposdenieve.MainActivity
+import mx.edu.ittepic.ladm_u2_practica1_coposdenieve.Pato
 
 class Lienzo (mainActivity: MainActivity) : View(mainActivity){
 
@@ -16,6 +17,7 @@ class Lienzo (mainActivity: MainActivity) : View(mainActivity){
 
     val copos = Array<Copo>(95,{Copo(this)})
     val carro = Array<Carro>(1,{Carro(this)})
+    //val patos = Array<Pato>(4,{Pato(this,0f,0f)})
 
     var i = 0
     val corrutina = GlobalScope.launch {
@@ -45,6 +47,11 @@ class Lienzo (mainActivity: MainActivity) : View(mainActivity){
         (0..20).forEach {
             c.drawRect(width/20*it+0f,it*10f+250,(width/20*(it+1)).toFloat()+30,(it+1)*25f +280,p)
         }
+
+        p.color = Color.rgb(255, 255, 255)
+        c.drawLine(100f,280f,width+0f,550f,p)
+        c.drawLine(100f,300f,width+0f,600f,p)
+        c.drawLine(100f,320f,width+0f,650f,p)
 
         /**
          * Carretera
@@ -87,19 +94,29 @@ class Lienzo (mainActivity: MainActivity) : View(mainActivity){
          * Patos
          * */
 
-        p.color = Color.WHITE
-        c.drawRect(115f,400f,140f,425f,p)//cuerpo
-        c.drawRect(130f,390f,140f,400f,p)//cabeza
-        c.drawRect(105f,410f,115f,415f,p)//cola
+        val pato1 = Pato(this,0f,80f)
+        val pato2 = Pato(this,30f,100f)
+        val pato3 = Pato(this,20f,140f)
+        val pato4 = Pato(this,50f,120f)
+        pato1.paint(c)
+        pato2.paint(c)
+        pato3.paint(c)
+        pato4.paint(c)
 
-        p.color = Color.rgb(255, 208, 0)
-        c.drawRect(140f,395f,150f,400f,p)//trompa
-        c.drawRect(120f,425f,125f,435f,p)//pata
-        c.drawRect(130f,425f,135f,435f,p)//pata
-
-
-
-
+        /**
+         * Cerca de patos
+         * */
+        p.color = Color.rgb(138, 90, 0)
+        (0..10).forEach {
+            if(it%2==0) {
+                c.drawRect(it * 10f + 100f, 600f, it * 10f + 110, 650f, p)
+                c.drawRect(it * 10f + 100f, 400f, it * 10f + 110, 450f, p)
+            }
+        }
+        c.drawRect(100f, 630f, 200f, 635f, p)
+        c.drawRect(100f, 430f, 200f, 435f, p)
+        c.drawRect(100f, 430f, 110f, 635f, p)
+        c.drawRect(200f, 430f, 210f, 635f, p)
 
         carro.forEach {
             it.move()

@@ -19,10 +19,11 @@ class Copo (l:Lienzo){
     var intensidad = 50
 
     init {
+        factor = rand(intensidad) / 100
         x = rand(1000)
         y = rand(2000)
 
-        factor = rand(intensidad) / 100
+
 
         movX = rand(6)+2
         movY = 30*factor
@@ -35,7 +36,8 @@ class Copo (l:Lienzo){
 
         val alpha = 255*factor
         color = Color.argb(alpha.toInt(),255,255,255)
-        //Log.i("FA","Factor "+factor+" - Alpha "+alpha+" - "+movY)
+       // Log.i("FA","Factor "+factor+" - Alpha "+alpha+" - "+movY)
+        Log.i("FA","Factor "+factor)
 
     }
 
@@ -50,10 +52,21 @@ class Copo (l:Lienzo){
             y = -40f
     }
 
-    fun pintar(canvas: Canvas){
+    fun pintar(c: Canvas){
         var p = Paint()
         p.color = color
-        canvas.drawCircle(x,y,radio,p)
+        //c.drawCircle(x,y,radio,p)
+
+        p.strokeWidth = 8f
+        c.drawLine(x+0f,y+50f,x+50f,y+50f,p)
+        c.drawLine(x+50f,y+50f,x+100f,y+50f,p)
+        c.drawLine(x+50f,y+0f,x+50f,y+50f,p)
+        c.drawLine(x+50f,y+50f,x+50f,y+100f,p)
+
+        c.drawLine(x+25f,y+25f,x+50f,y+50f,p)
+        c.drawLine(x+25f,y+75f,x+50f,y+50f,p)
+        c.drawLine(x+50f,y+50f,x+75f,y+25f,p)
+        c.drawLine(x+50f,y+50f,x+75f,y+75f,p)
     }
 
     fun velocidadAlta(){
